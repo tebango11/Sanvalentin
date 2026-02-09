@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap');
+
+:root{
+  --bg1:#ffd6e7;
+  --bg2:#ffeef6;
+  --card:#ffffff;
+  --shadow: 0 18px 40px rgba(0,0,0,.12);
+  --txt:#2b2b2b;
+  --pink:#ff5a99;
+  --pink2:#ff79ad;
+  --gray:#e8e8e8;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  font-family:"Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--txt);
+  background:
+    radial-gradient(600px 600px at 20% 15%, rgba(255,90,153,.18), transparent 60%),
+    radial-gradient(650px 650px at 80% 30%, rgba(255,121,173,.18), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+  overflow:hidden;
+}
+
+.wrap{
+  width:100%;
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+
+.card{
+  width:min(420px, 92vw);
+  background: var(--card);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+  text-align:center;
+  position:relative;
+}
+
+.top{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding-top:4px;
+}
+
+.hero{
+  width: 170px;
+  height:auto;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
+.hearts{
+  font-size: 16px;
+  color: rgba(255,90,153,.65);
+  letter-spacing: 6px;
+  transform: translateY(-6px);
+}
+
+h1{
+  margin: 6px 0 14px;
+  font-size: 22px;
+  line-height:1.15;
+  font-weight: 800;
+}
+
+.btnRow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  position:relative;
+  min-height: 58px; /* para que no “salte” cuando NO se mueva */
+}
+
+.btn{
+  border: none;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor:pointer;
+  font-size: 14px;
+  transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover{ transform: translateY(-1px); filter: brightness(1.03); }
+.btn:active{ transform: translateY(1px) scale(.99); }
+
+.yes:hover{
+  animation: jelly 0.6s ease;
+}
+
+@keyframes jelly{
+  0%{ transform: scale(1,1); }
+  30%{ transform: scale(1.25,0.75); }
+  40%{ transform: scale(0.75,1.25); }
+  50%{ transform: scale(1.15,0.85); }
+  65%{ transform: scale(.95,1.05); }
+  75%{ transform: scale(1.05,.95); }
+  100%{ transform: scale(1,1); }
+}
+
+
+.no{
+  background: #f3f3f3;
+  color:#444;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  z-index: 20;
+}
+
+.step{
+  margin-top: 14px;
+  padding: 12px 10px;
+  border-radius: 18px;
+  background: #fff6fb;
+  border: 1px solid rgba(255,90,153,.18);
+}
+
+.step h2{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.btnRow.mini .btn{
+  padding: 10px 16px;
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+
+.opt{
+  background: white;
+  border: 1px solid rgba(255,90,153,.25);
+}
+
+.result{
+  margin-top: 14px;
+  padding: 14px 10px;
+  border-radius: 18px;
+  background: #fff6fb;
+  border: 1px solid rgba(255,90,153,.20);
+}
+
+.big{
+  font-size: 54px;
+  animation: pulse 1s infinite;
+}
+
+.result h2{
+  margin: 6px 0 2px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.result p{
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.hidden{ display:none; }
+
+@keyframes pulse{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.08); }
+}
+
+#confetti{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index: 50;
+}
+/* =========================
+   CORAZONES FLOTANTES
+========================= */
+
+.floating-hearts{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.heart{
+  position: absolute;
+  bottom: -40px;
+  font-size: 18px;
+  animation: floatUp linear forwards;
+  opacity: .7;
+}
+
+@keyframes floatUp{
+  to{
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Botón WhatsApp */
+
+.waBtn{
+  display:inline-block;
+  margin-top:12px;
+  padding:12px 18px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(135deg,#25d366,#1ebe57);
+  box-shadow:0 10px 20px rgba(0,0,0,.15);
+  transition:.15s ease;
+}
+
+.waBtn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.05);
+}
